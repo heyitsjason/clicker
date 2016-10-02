@@ -1,3 +1,25 @@
-.large-text {
-    font-size: 30px;
+body {
+    display: block;
+    margin: 0;
+    padding: 0;
 }
+
+html {
+    font-size: 5.0vmin;
+}
+
+.header-region {
+    background-color: rgb(255,200,200);
+    height: 10vh;
+}
+
+.content-region {
+    background-color: rgb(200,255,200);
+    height: 80vh;
+}
+
+.footer-region {
+    background-color: rgb(200,200,255);
+    height: 10vh;
+}
+

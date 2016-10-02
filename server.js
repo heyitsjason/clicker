@@ -6,8 +6,8 @@ var http = require('http'),
 
 function handleRequest(request, response){
     try {
-        var contentType = getContentType(request.url),
-            filename = getFilename(request.url);
+        var filename = getFilename(request.url),
+            contentType = getContentType(filename);
 
         response.writeHead(200, {'Content-Type': contentType});
         response.end(getPage(filename));
@@ -28,9 +28,14 @@ function getContentType(url) {
 };
 
 function getFilename(url) {
+    url || (url = '');
 
     if (url.startsWith('/')) {
-        return url.substring(1);
+        url = url.substring(1);
+    }
+
+    if (url === '') {
+        url = 'resources/index.html';
     }
 
     return url;
@@ -40,6 +45,6 @@ function getPage(filename) {
     return file.load(filename);
 };
 
-server.listen(PORT, function(){
+server.listen(PORT, function() {
     console.log("Server listening on: http://localhost:%s", PORT);
 });

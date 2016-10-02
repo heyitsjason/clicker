@@ -1,11 +1,9 @@
 function run() {
-    var headerRegion = document.getElementsByClassName('header-region')[0],
-        contentRegion = document.getElementsByClassName('content-region')[0],
-        footerRegion = document.getElementsByClassName('footer-region')[0];
+    state.regions || (state.regions = {});
 
-    var div = document.createElement('div');
-    div.className = 'large-text';
-    div.innerHTML = 'test';
+    state.regions.header = document.getElementsByClassName('header-region')[0];
+    state.regions.content = document.getElementsByClassName('content-region')[0];
+    state.regions.footer = document.getElementsByClassName('footer-region')[0];
 
-    contentRegion.appendChild(div);
+    route();
 }
