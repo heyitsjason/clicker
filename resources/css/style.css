@@ -23,3 +23,14 @@ html {
     height: 10vh;
 }
 
+.button {
+    background-color: rgb(255,255,255);
+    font-size: 5.0vmin;
+    display: inline-block;
+    float: right;
+    width: 30vw;
+    height: 8vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-right: 2.5vw;
+}
