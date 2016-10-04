@@ -5,25 +5,20 @@
         <title>Clicker</title>
         <link rel="stylesheet" type="text/css" href="resources/css/style.css">
         <script src="resources/js/ajax.js"></script>
+        <script src="resources/js/cache.js"></script>
         <script src="resources/js/constants.js"></script>
         <script src="resources/js/router.js"></script>
         <script src="resources/js/state.js"></script>
+        <script src="resources/js/util.js"></script>
+        <script src="src/content/goals.js"></script>
+        <script src="src/content/invest.js"></script>
+        <script src="src/content/work.js"></script>
+        <script src="src/footer/footer.js"></script>
+        <script src="src/header/header.js"></script>
     </head>
-    <body>
+    <body onload="initState()">
         <div id="header" class="header-region"></div>
         <div id="content" class="content-region"></div>
         <div id="footer" class="footer-region"></div>
-        <script>
-            state.regions || (state.regions = {});
-
-            state.regions.header = document.getElementById('header');
-            state.regions.content = document.getElementById('content');
-            state.regions.footer = document.getElementById('footer');
-
-            loadRegion('src/header/header.html', state.regions.header);
-            loadRegion('src/footer/footer.html', state.regions.footer);
-
-            route();
-        </script>
     </body>
 </html>

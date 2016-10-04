@@ -1,0 +1,7 @@
+function initWork() {
+
+};
+
+function updateWork() {
+
+};

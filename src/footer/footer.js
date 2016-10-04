@@ -1,0 +1,7 @@
+function initFooter() {
+
+};
+
+function updateFooter() {
+
+};

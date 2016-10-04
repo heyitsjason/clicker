@@ -1,0 +1,7 @@
+function initInvest() {
+
+};
+
+function updateInvest() {
+
+};

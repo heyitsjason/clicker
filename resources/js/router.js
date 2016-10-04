@@ -12,27 +12,23 @@ function route() {
     routes[fragment] ? routes[fragment]() : routes[DEFAULT_FRAGMENT]();
 };
 
-function loadRegion(uri, region, callback) {
-    ajax.get(uri, function(response) {
-        region.innerHTML = response;
-        callback && callback();
-    });
-};
-
 var routes = {
     '#home': function() {
         state.regions.content.innerHTML = 'Home';
     },
-    '#train': function() {
-        state.regions.content.innerHTML = 'Train';
+    '#work': function() {
+        loadRegion('src/content/work.html', state.regions.content, function() {
+            initWork();
+        });
     },
-    '#defend': function() {
-        state.regions.content.innerHTML = 'Defend';
+    '#invest': function() {
+        loadRegion('src/content/invest.html', state.regions.content, function() {
+            initInvest();
+        });
     },
-    '#stats': function() {
-        state.regions.content.innerHTML = 'Stats';
-    },
-    '#login': function() {
-        state.regions.content.innerHTML = 'Login';
+    '#goals': function() {
+        loadRegion('src/content/goals.html', state.regions.content, function() {
+            initGoals();
+        });
     }
 }
