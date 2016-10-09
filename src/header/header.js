@@ -3,6 +3,9 @@ function initHeader() {
 };
 
 function updateHeader() {
-    document.getElementById('d-total').innerHTML = state.dollars + ' Dollars';
-    document.getElementById('d-dps').innerHTML = state.dps + ' DPS';
+    document.getElementById('points-total').innerHTML =
+        state.points + ' ' + constants.pointsLabel;
+
+    document.getElementById('points-rate').innerHTML =
+        state.pointsPerSecond + ' ' + constants.pointsPerSecondLabel;
 };

@@ -1,0 +1,7 @@
+function initHome() {
+
+};
+
+function updateHome() {
+
+};

@@ -1,34 +1,42 @@
-const DEFAULT_FRAGMENT = '#home';
-
-window.onhashchange = route;
-
 function navigate(route) {
     window.location.hash = "#" + route;
 }
 
-function route() {
-    var fragment = window.location.hash || DEFAULT_FRAGMENT;
+function route(event, override, callback) {
+    var fallback = '#' + constants.defaultFragment,
+        fragment =  override || window.location.hash;
 
-    routes[fragment] ? routes[fragment]() : routes[DEFAULT_FRAGMENT]();
+    routes[fragment] ?  routes[fragment](callback) :
+                        routes[constants.defaultFragment](callback);
 };
 
 var routes = {
-    '#home': function() {
-        state.regions.content.innerHTML = 'Home';
+    '#home': function(callback) {
+        console.log('route home');
+        loadRegion('src/content/home.html', state.regions.content, function() {
+            initHome();
+            callback && callback();
+        });
     },
-    '#work': function() {
+    '#work': function(callback) {
+        console.log('route work');
         loadRegion('src/content/work.html', state.regions.content, function() {
             initWork();
+            callback && callback();
         });
     },
-    '#invest': function() {
+    '#invest': function(callback) {
+        console.log('route invest');
         loadRegion('src/content/invest.html', state.regions.content, function() {
             initInvest();
+            callback && callback();
         });
     },
-    '#goals': function() {
+    '#goals': function(callback) {
+        console.log('route goals');
         loadRegion('src/content/goals.html', state.regions.content, function() {
             initGoals();
+            callback && callback();
         });
     }
 }

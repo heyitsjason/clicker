@@ -1,11 +1,11 @@
 var state = {
-    dollars: 0,
-    dps: 1,
+    points: constants.initialPoints,
+    pointsPerSecond: constants.initialPointsPerSecond,
+    cache: {},
+    regions: {}
 };
 
 function initState() {
-    state.regions || (state.regions = {});
-
     state.regions.header = document.getElementById('header');
     state.regions.content = document.getElementById('content');
     state.regions.footer = document.getElementById('footer');
@@ -19,11 +19,14 @@ function initState() {
         initFooter();
     });
 
-    navigate('home');
+    route(null, constants.defaultFragment, function() {
+        navigate(constants.defaultFragment);
+        window.onhashchange = route;
+    });
 }
 
 function run() {
-    state.dollars += state.dps;
+    state.points += state.pointsPerSecond;
 
     updateHeader();
     updateWork();
@@ -31,4 +34,20 @@ function run() {
     updateGoals();
 
     setTimeout(run, 1000);
+}
+
+function loadRegion(uri, region, callback) {
+    if (state.cache[uri]) {
+        _loadData(state.cache[uri], region, callback);
+    } else {
+        ajax.get(uri, function(response) {
+            state.cache[uri] = response;
+            _loadData(state.cache[uri], region, callback);
+        });
+    }
+};
+
+function _loadData(data, region, callback) {
+    region.innerHTML = data;
+    callback && callback();
 }
