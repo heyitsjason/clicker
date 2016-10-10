@@ -7,7 +7,7 @@ function route(event, override, callback) {
         fragment =  override || window.location.hash;
 
     routes[fragment] ?  routes[fragment](callback) :
-                        routes[constants.defaultFragment](callback);
+                        routes[fallback](callback);
 };
 
 var routes = {

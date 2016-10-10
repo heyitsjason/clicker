@@ -2,7 +2,13 @@ var state = {
     points: constants.initialPoints,
     pointsPerSecond: constants.initialPointsPerSecond,
     cache: {},
-    regions: {}
+    regions: {},
+    investments: {
+        empty: {
+            lvl: 0,
+            upgrades: {}
+        }
+    }
 };
 
 function initState() {
@@ -26,14 +32,25 @@ function initState() {
 }
 
 function run() {
-    state.points += state.pointsPerSecond;
+    var pointsPerSecond = state.pointsPerSecond;
 
-    updateHeader();
+    for (var investmentId in state.investments) {
+
+        if (constants.invest.investments[investmentId]) {
+            var investmentBase = constants.invest.investments[investmentId].bonusBase;
+
+            pointsPerSecond += state.investments[investmentId].lvl * investmentBase;
+        }
+    }
+
+    state.points += pointsPerSecond / 4;
+
+    updateHeader(pointsPerSecond);
     updateWork();
     updateInvest();
     updateGoals();
 
-    setTimeout(run, 1000);
+    setTimeout(run, 250);
 }
 
 function loadRegion(uri, region, callback) {

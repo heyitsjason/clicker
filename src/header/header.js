@@ -2,10 +2,10 @@ function initHeader() {
 
 };
 
-function updateHeader() {
+function updateHeader(pointsPerSecond) {
     document.getElementById('points-total').innerHTML =
-        state.points + ' ' + constants.pointsLabel;
+        Math.round(state.points) + ' ' + constants.pointsLabel;
 
     document.getElementById('points-rate').innerHTML =
-        state.pointsPerSecond + ' ' + constants.pointsPerSecondLabel;
+        Math.round(pointsPerSecond) + ' ' + constants.pointsPerSecondLabel;
 };

@@ -22,6 +22,8 @@ function getContentType(url) {
         return 'text/html';
     } else if (url.endsWith('.css')) {
         return 'text/css';
+    } else if (url.endsWith('.png')) {
+        return 'image/png';
     }
 
     return 'text/plain';
